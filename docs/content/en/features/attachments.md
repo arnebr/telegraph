@@ -51,6 +51,14 @@ A location attachment can be sent through Telegraph `->location()` method:
 Telegraph::location(12.345, -54.321)->send();
 ```
 
+### Invoice
+
+An Invoice attachment can be sent through Telegraph `->invoice()` method:
+
+```php
+Telegraph::invoice()->send();
+```
+
 ## Options
 
 When sending files, some options are available:

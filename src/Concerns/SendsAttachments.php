@@ -223,4 +223,20 @@ trait SendsAttachments
 
         return ceil($sizeInKBytes * 100) / 100;
     }
+
+    public function invoice(array $data): Telegraph
+    {
+        $telegraph = clone $this;
+
+        $telegraph->endpoint = self::ENDPOINT_INVOICE;
+        $telegraph->data['chat_id'] = $telegraph->getChat()->chat_id;
+        $telegraph->data['payload'] = $data['payload'];
+        $telegraph->data['title'] = $data['title'];
+        $telegraph->data['provider_token'] = $data['provider_token'];
+        $telegraph->data['currency'] = $data['currency'];
+        $telegraph->data['description'] = $data['description'];
+        $telegraph->data['prices'] = $data['prices'];
+
+        return $telegraph;
+    }
 }
