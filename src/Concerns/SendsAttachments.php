@@ -224,6 +224,11 @@ trait SendsAttachments
         return ceil($sizeInKBytes * 100) / 100;
     }
 
+    /**
+     * @param array<string, mixed> $data
+     *
+     * @return Telegraph
+     */
     public function invoice(array $data): Telegraph
     {
         $telegraph = clone $this;
