@@ -41,7 +41,7 @@ it('test', function () {
         'currency' => 'EUR',
         'prices' => [
           [  'label' => 'casa',
-            'amount' => 10],
+            'amount' => 10, ],
         ],
     ])->send()->dd();
 })->only();
