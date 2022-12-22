@@ -38,6 +38,7 @@ class Telegraph
     use InteractWithUsers;
 
     public const MAX_DOCUMENT_SIZE_IN_MB = 50;
+    public const MAX_ANIMATION_SIZE_IN_MB = 50;
     public const MAX_PHOTO_SIZE_IN_MB = 10;
     public const MAX_PHOTO_HEIGHT_WIDTH_TOTAL = 10000;
     public const MAX_PHOTO_HEIGHT_WIDTH_RATIO = 20;
@@ -49,6 +50,7 @@ class Telegraph
 
     public const PARSE_HTML = 'html';
     public const PARSE_MARKDOWN = 'markdown';
+    public const PARSE_MARKDOWNV2 = 'MarkdownV2';
 
     protected const TELEGRAM_API_BASE_URL = 'https://api.telegram.org/bot';
     protected const TELEGRAM_API_FILE_BASE_URL = 'https://api.telegram.org/file/bot';
@@ -69,7 +71,9 @@ class Telegraph
     public const ENDPOINT_UNPIN_ALL_MESSAGES = 'unpinAllChatMessages';
     public const ENDPOINT_EDIT_MESSAGE = 'editMessageText';
     public const ENDPOINT_EDIT_CAPTION = 'editMessageCaption';
+    public const ENDPOINT_EDIT_MEDIA = 'editMessageMedia';
     public const ENDPOINT_SEND_LOCATION = 'sendLocation';
+    public const ENDPOINT_SEND_ANIMATION = 'sendAnimation';
     public const ENDPOINT_SEND_VOICE = 'sendVoice';
     public const ENDPOINT_SEND_CHAT_ACTION = 'sendChatAction';
     public const ENDPOINT_SEND_DOCUMENT = 'sendDocument';
@@ -87,6 +91,7 @@ class Telegraph
     public const ENDPOINT_LEAVE_CHAT = 'leaveChat';
     public const ENDPOINT_GET_CHAT_INFO = 'getChat';
     public const ENDPOINT_GET_CHAT_MEMBER_COUNT = 'getChatMemberCount';
+    public const ENDPOINT_GET_CHAT_MEMBER = 'getChatMember';
     public const ENDPOINT_SET_CHAT_PERMISSIONS = 'setChatPermissions';
     public const ENDPOINT_BAN_CHAT_MEMBER = 'banChatMember';
     public const ENDPOINT_UNBAN_CHAT_MEMBER = 'unbanChatMember';
@@ -95,6 +100,8 @@ class Telegraph
     public const ENDPOINT_SEND_POLL = 'sendPoll';
     public const ENDPOINT_FORWARD_MESSAGE = 'forwardMessage';
     public const ENDPOINT_GET_USER_PROFILE_PHOTOS = 'getUserProfilePhotos';
+    public const ENDPOINT_GET_CHAT_MENU_BUTTON = 'getChatMenuButton';
+    public const ENDPOINT_DICE = 'sendDice';
     public const ENDPOINT_INVOICE = 'sendInvoice';
 
 

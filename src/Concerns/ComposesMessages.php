@@ -15,6 +15,7 @@ trait ComposesMessages
 
         return match (config('telegraph.default_parse_mode')) {
             self::PARSE_MARKDOWN => $telegraph->markdown($message),
+            self::PARSE_MARKDOWNV2 => $telegraph->markdownV2($message),
             default => $telegraph->html($message)
         };
     }
@@ -24,7 +25,7 @@ trait ComposesMessages
         $this->endpoint ??= self::ENDPOINT_MESSAGE;
 
         $this->data['text'] = $message;
-        $this->data['chat_id'] = $this->getChat()->chat_id;
+        $this->data['chat_id'] = $this->getChatId();
     }
 
     public function html(string $message = null): Telegraph
@@ -49,6 +50,19 @@ trait ComposesMessages
         }
 
         $telegraph->data['parse_mode'] = 'markdown';
+
+        return $telegraph;
+    }
+
+    public function markdownV2(string $message = null): Telegraph
+    {
+        $telegraph = clone $this;
+
+        if ($message !== null) {
+            $telegraph->setMessageText($message);
+        }
+
+        $telegraph->data['parse_mode'] = 'MarkdownV2';
 
         return $telegraph;
     }
@@ -105,7 +119,7 @@ trait ComposesMessages
 
         $telegraph->endpoint = self::ENDPOINT_DELETE_MESSAGE;
         $telegraph->data = [
-            'chat_id' => $telegraph->getChat()->chat_id,
+            'chat_id' => $telegraph->getChatId(),
             'message_id' => $messageId,
         ];
 
@@ -118,7 +132,7 @@ trait ComposesMessages
 
         $telegraph->endpoint = self::ENDPOINT_PIN_MESSAGE;
         $telegraph->data = [
-            'chat_id' => $telegraph->getChat()->chat_id,
+            'chat_id' => $telegraph->getChatId(),
             'message_id' => $messageId,
         ];
 
@@ -131,7 +145,7 @@ trait ComposesMessages
 
         $telegraph->endpoint = self::ENDPOINT_UNPIN_MESSAGE;
         $telegraph->data = [
-            'chat_id' => $telegraph->getChat()->chat_id,
+            'chat_id' => $telegraph->getChatId(),
             'message_id' => $messageId,
         ];
 
@@ -144,7 +158,7 @@ trait ComposesMessages
 
         $telegraph->endpoint = self::ENDPOINT_UNPIN_ALL_MESSAGES;
         $telegraph->data = [
-            'chat_id' => $telegraph->getChat()->chat_id,
+            'chat_id' => $telegraph->getChatId(),
         ];
 
         return $telegraph;
@@ -158,7 +172,7 @@ trait ComposesMessages
 
         $telegraph->endpoint = self::ENDPOINT_FORWARD_MESSAGE;
         $telegraph->data = [
-            'chat_id' => $telegraph->getChat()->chat_id,
+            'chat_id' => $telegraph->getChatId(),
             'message_id' => $messageId,
             'from_chat_id' => $fromChatId,
         ];

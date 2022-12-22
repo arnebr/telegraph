@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static string getUrl()
- * @method static \DefStudio\Telegraph\Telegraph  bot(TelegraphBot $bot)
- * @method static \DefStudio\Telegraph\Telegraph  chat(TelegraphChat $chat)
+ * @method static \DefStudio\Telegraph\Telegraph  bot(TelegraphBot|string $bot)
+ * @method static \DefStudio\Telegraph\Telegraph  chat(TelegraphChat|string $chat)
  * @method static \DefStudio\Telegraph\Telegraph  message(string $message)
  * @method static \DefStudio\Telegraph\Telegraph  html(string $message)
  * @method static \DefStudio\Telegraph\Telegraph  reply(int $messageId)
  * @method static \DefStudio\Telegraph\Telegraph  edit(string $messageId)
  * @method static \DefStudio\Telegraph\Telegraph  markdown(string $message)
+ * @method static \DefStudio\Telegraph\Telegraph  markdownV2(string $message)
  * @method static \DefStudio\Telegraph\Telegraph  registerWebhook()
  * @method static \DefStudio\Telegraph\Telegraph  unregisterWebhook(bool $dropPendingUpdates = false)
  * @method static \DefStudio\Telegraph\Telegraph  registerBotCommands(array $commands)
@@ -34,11 +35,14 @@ use Illuminate\Support\Facades\Facade;
  * @method static \DefStudio\Telegraph\Telegraph  unpinMessage(string $messageId)
  * @method static \DefStudio\Telegraph\Telegraph  unpinAllMessages()
  * @method static \DefStudio\Telegraph\Telegraph  editCaption(string $messageId)
+ * @method static \DefStudio\Telegraph\Telegraph  editMedia(string $messageId)
  * @method static \DefStudio\Telegraph\Telegraph  answerInlineQuery(string $inlineQueryID, array $results)
  * @method static \DefStudio\Telegraph\Telegraph  document(string $path, string $filename = null)
  * @method static \DefStudio\Telegraph\Telegraph  photo(string $path, string $filename = null)
+ * @method static \DefStudio\Telegraph\Telegraph  animation(string $path, string $filename = null)
  * @method static \DefStudio\Telegraph\Telegraph  voice(string $path, string $filename = null)
  * @method static \DefStudio\Telegraph\Telegraph  location(float $latitude, float $longitude)
+ * @method static \DefStudio\Telegraph\Telegraph  dice()
  * @method static \DefStudio\Telegraph\Telegraph  invoice(array $data)
  * @method static \DefStudio\Telegraph\Telegraph  botUpdates()
  * @method static \DefStudio\Telegraph\Telegraph  botInfo()
@@ -52,6 +56,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \DefStudio\Telegraph\Telegraph  editChatInviteLink()
  * @method static \DefStudio\Telegraph\Telegraph  revokeChatInviteLink()
  * @method static \DefStudio\Telegraph\Telegraph  chatMemberCount()
+ * @method static \DefStudio\Telegraph\Telegraph  chatMember(string $userId)
  * @method static \DefStudio\Telegraph\Telegraph  setChatPermissions(array $permissions)
  * @method static \DefStudio\Telegraph\Telegraph  banChatMember(string $userId)
  * @method static \DefStudio\Telegraph\Telegraph  unbanChatMember(string $userId)
@@ -59,6 +64,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \DefStudio\Telegraph\Telegraph  promoteChatMember(string $userId, array $permissions)
  * @method static \DefStudio\Telegraph\Telegraph  demoteChatMember(string $userId)
  * @method static \DefStudio\Telegraph\Telegraph  userProfilePhotos(string $userId)
+ * @method static \DefStudio\Telegraph\Telegraph  chatMenuButton()
  * @method static TelegraphPollPayload poll(string $question)
  * @method static TelegraphQuizPayload quiz(string $question)
  * @method static string store(Downloadable $attachment, string $path, string $filename = null)
@@ -78,6 +84,8 @@ use Illuminate\Support\Facades\Facade;
  */
 class Telegraph extends Facade
 {
+    protected static $cached = false;
+
     /**
      * @param array<string, array<mixed>> $replies
      */

@@ -16,7 +16,7 @@ send back the results for an inline query
     InlineQueryResultPhoto::make($logo->id."-light", "https://logofinder.dev/$logo->id/light.jpg", "https://logofinder.dev/$logo->id/light/thumb.jpg")
         ->caption('Light Logo'),
     InlineQueryResultPhoto::make($logo->id."-dark", "https://logofinder.dev/$logo->id/dark.jpg", "https://logofinder.dev/$logo->id/dark/thumb.jpg")
-        ->caption('Light Logo'),
+        ->caption('Dark Logo'),
 ])->cache(seconds: 600)->send();
 ```
 
@@ -135,7 +135,17 @@ Telegraph::edit($messageId)->markdown('new message')->send();
 edits an attachment caption
 
 ```php
-Telegraph::editCaption($messageId)->markdown('new caption')->send();
+Telegraph::editCaption($messageId)->markdownV2('new caption')->send();
+```
+
+## editMedia
+
+edits a media messages with a new media content
+
+```php
+Telegraph::editMedia($messageId)->photo($path)->send();
+Telegraph::editMedia($messageId)->document($path)->send();
+Telegraph::editMedia($messageId)->animation($path)->send();
 ```
 
 ## getWebhookDebugInfo
@@ -160,6 +170,14 @@ compose a new telegram message (parsed as markdown)
 
 ```php
 Telegraph::markdown('*hello* world')->send();
+```
+
+## markdownV2
+
+compose a new telegram message (parsed as markdownV2)
+
+```php
+Telegraph::markdownV2('*hello* world')->send();
 ```
 
 ## message
@@ -310,6 +328,13 @@ title: my telegram group
 ...
 */
 ```
+## chatMenuButton
+
+retrieves a bot current menu button info
+
+```php
+Telegraph::chatMenuButton()->send();
+```
 
 ### getFileInfo
 
@@ -325,6 +350,14 @@ retrieves Chat member count
 
 ```php
 Telegraph::chatMemberCount()->send();
+```
+
+## chatMember
+
+retrieves a Chat member
+
+```php
+Telegraph::chatMember($userId)->send();
 ```
 
 ## userProfilePhotos

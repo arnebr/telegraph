@@ -19,7 +19,7 @@ use DefStudio\Telegraph\Telegraph;
 trait ManagesKeyboards
 {
     /**
-     * @param array<array-key, array<array-key, array{text: string, url?: string, callback_data?: string, web_app?: string[]}>>|Keyboard|callable(Keyboard):Keyboard $keyboard
+     * @param array<array-key, array<array-key, array{text: string, url?: string, callback_data?: string, web_app?: string[], login_url?: string[]}>>|Keyboard|callable(Keyboard):Keyboard $keyboard
      */
     public function keyboard(callable|array|Keyboard $keyboard): Telegraph
     {
@@ -110,7 +110,7 @@ trait ManagesKeyboards
 
         $telegraph->endpoint = self::ENDPOINT_REPLACE_KEYBOARD;
         $telegraph->data = [
-            'chat_id' => $telegraph->getChat()->chat_id,
+            'chat_id' => $telegraph->getChatId(),
             'message_id' => $messageId,
             'reply_markup' => $replyMarkup,
         ];

@@ -2,6 +2,7 @@
 
 /** @noinspection PhpUnhandledExceptionInspection */
 
+use DefStudio\Telegraph\Enums\Emojis;
 use DefStudio\Telegraph\Exceptions\FileException;
 use DefStudio\Telegraph\Exceptions\TelegraphException;
 use DefStudio\Telegraph\Facades\Telegraph as TelegraphFacade;
@@ -14,6 +15,23 @@ it('can send a document', function () {
         ->toMatchTelegramSnapshot();
 });
 
+it('can send a dice', function () {
+    expect(fn (Telegraph $telegraph) => $telegraph->dice())
+        ->toMatchTelegramSnapshot();
+});
+
+it('can send a dice with different emojis', function (string $emoji) {
+    expect(fn (Telegraph $telegraph) => $telegraph->dice($emoji))
+        ->toMatchTelegramSnapshot();
+})->with([
+    'DICE' => Emojis::DICE,
+    'ARROW' => Emojis::ARROW,
+    'BASKETBALL' => Emojis::BASKETBALL,
+    'FOOTBALL' => Emojis::FOOTBALL,
+    'BOWLING' => Emojis::BOWLING,
+    'SLOT_MACHINE' => Emojis::SLOT_MACHINE,
+]);
+
 it('requires a chat to send a document', function () {
     TelegraphFacade::document(Storage::path('test.txt'));
 })->throws(TelegraphException::class, 'No TelegraphChat defined for this request');
@@ -25,6 +43,11 @@ it('can attach a document while writing a message', function () {
 
 it('can attach a document with markdown caption', function () {
     expect(fn (Telegraph $telegraph) => $telegraph->document(Storage::path('test.txt'))->markdown('look at **this** file!'))
+        ->toMatchTelegramSnapshot();
+});
+
+it('can attach a document with markdownV2 caption', function () {
+    expect(fn (Telegraph $telegraph) => $telegraph->document(Storage::path('test.txt'))->markdownV2('look at **this** file!'))
         ->toMatchTelegramSnapshot();
 });
 
@@ -138,6 +161,12 @@ it('can send a photo', function () {
         ->toMatchTelegramSnapshot();
 });
 
+it('can send an animation', function () {
+    expect(fn (Telegraph $telegraph) => $telegraph->animation(Storage::path('gif.gif')))
+        ->toMatchTelegramSnapshot();
+});
+
+
 it('requires a chat to send a photo', function () {
     TelegraphFacade::photo(Storage::path('photo.jpg'));
 })->throws(TelegraphException::class, 'No TelegraphChat defined for this request');
@@ -149,6 +178,11 @@ it('can attach a photo while writing a message', function () {
 
 it('can attach a photo with markdown caption', function () {
     expect(fn (Telegraph $telegraph) => $telegraph->photo(Storage::path('photo.jpg'))->markdown('look at **this** photo!'))
+        ->toMatchTelegramSnapshot();
+});
+
+it('can attach a photo with markdownV2 caption', function () {
+    expect(fn (Telegraph $telegraph) => $telegraph->photo(Storage::path('photo.jpg'))->markdownV2('look at **this** photo!'))
         ->toMatchTelegramSnapshot();
 });
 
@@ -231,6 +265,11 @@ it('can attach a voice with markdown caption', function () {
         ->toMatchTelegramSnapshot();
 });
 
+it('can attach a voice with markdownV2 caption', function () {
+    expect(fn (Telegraph $telegraph) => $telegraph->voice(Storage::path('voice.ogg'))->markdownV2('listen **this** one'))
+        ->toMatchTelegramSnapshot();
+});
+
 it('can attach a voice with html caption', function () {
     expect(fn (Telegraph $telegraph) => $telegraph->voice(Storage::path('voice.ogg'))->html('listen <b>this</b> one!'))
         ->toMatchTelegramSnapshot();
@@ -275,5 +314,26 @@ test('voices are validated', function (string $path, bool $valid, string $except
 
 it('can edit a message caption', function () {
     expect(fn (Telegraph $telegraph) => $telegraph->editCaption(42)->message('foo'))
+        ->toMatchTelegramSnapshot();
+});
+
+it('can edit a media messages with a photo', function () {
+    $photo_path = 'www.photoUrl.com';
+
+    expect(fn (Telegraph $telegraph) => $telegraph->editMedia(42)->photo($photo_path))
+        ->toMatchTelegramSnapshot();
+});
+
+it('can edit a media messages with a document', function () {
+    $document_path = 'www.documentUrl.com';
+
+    expect(fn (Telegraph $telegraph) => $telegraph->editMedia(42)->document($document_path))
+        ->toMatchTelegramSnapshot();
+});
+
+it('can edit a media messages with an animation', function () {
+    $animation_path = 'www.animationUrl.com';
+
+    expect(fn (Telegraph $telegraph) => $telegraph->editMedia(42)->animation($animation_path))
         ->toMatchTelegramSnapshot();
 });

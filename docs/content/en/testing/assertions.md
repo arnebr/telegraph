@@ -4,7 +4,7 @@ menuTitle: 'Assertions'
 description: ''
 category: 'Testing'
 fullscreen: false
-position: 71
+position: 101
 ---
 
 The `::fake()` facade helper enables a number of assertions for checking its activity
@@ -57,6 +57,14 @@ asserts that the given files were sent to a Telegram API endpoint
 Telegraph::assertSentFiles(\DefStudio\Telegraph\Telegraph::ENDPOINT_SEND_DOCUMENT, [
    'document' => new Attachment(Storage::path('test.txt'), 'test.txt'),
 ]);
+```
+
+## assertSentEditMedia
+
+asserts that the given data was sent to a Telegram API endpoint
+
+```php
+Telegraph::assertSentEditMedia('mediaType', Storage::path('photo.jpg'));
 ```
 
 ## assertStoredFile

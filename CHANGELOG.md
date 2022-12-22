@@ -2,6 +2,99 @@
 
 All notable changes to `telegraph` will be documented in this file.
 
+## v1.28.0 - 2022-12-21
+
+### What's Changed
+
+- [feat] Model-less mode by @fabio-ivona in https://github.com/defstudio/telegraph/pull/294
+
+**Full Changelog**: https://github.com/defstudio/telegraph/compare/v1.27.0...v1.28.0
+
+## v1.27.0 - 2022-12-17
+
+### What's Changed
+
+- [feat] sendAnimation method by @MarioGattolla in https://github.com/defstudio/telegraph/pull/295
+
+**Full Changelog**: https://github.com/defstudio/telegraph/compare/v1.26.2...v1.26.3
+
+## v1.26.2 - 2022-12-14
+
+**Full Changelog**: https://github.com/defstudio/telegraph/compare/v1.26.1...v1.26.2
+
+## v1.26.1 - 2022-12-14
+
+**Full Changelog**: https://github.com/defstudio/telegraph/compare/v1.26.0...v1.26.1
+
+## v1.26.0 - 2022-12-14
+
+### What's Changed
+
+- Bump decode-uri-component from 0.2.0 to 0.2.2 in /docs by @dependabot in https://github.com/defstudio/telegraph/pull/283
+- Change caption of button by @ChillMouse in https://github.com/defstudio/telegraph/pull/287
+- Issue #268 implement editMessageMedia method by @MarioGattolla in https://github.com/defstudio/telegraph/pull/277
+- [feat] login_url for keyboards by @MarioGattolla in https://github.com/defstudio/telegraph/pull/291
+- [docs] added suggestion on contact verification by @ChillMouse in https://github.com/defstudio/telegraph/pull/286
+- [fix] chat_ids greater than 2147483647 in 32 bit systems by @evrard-c in https://github.com/defstudio/telegraph/pull/288
+
+### New Contributors
+
+- @ChillMouse made their first contribution in https://github.com/defstudio/telegraph/pull/287
+
+**Full Changelog**: https://github.com/defstudio/telegraph/compare/v1.24.4...v1.26.0
+
+## v1.25.0 - 2022-12-07
+
+### What's Changed
+
+- [feat] model storage by @fabio-ivona in https://github.com/defstudio/telegraph/pull/271
+- [fix] disable telegraph facade caching by @MarioGattolla in https://github.com/defstudio/telegraph/pull/279
+- [fix] bug in DTO/Location by @ahr1384 in https://github.com/defstudio/telegraph/pull/282
+
+**Full Changelog**: https://github.com/defstudio/telegraph/compare/v1.24.3...v1.24.4
+
+## v1.24.3 - 2022-11-25
+
+### What's Changed
+
+- fix #274 by @fabio-ivona in https://github.com/defstudio/telegraph/pull/275
+
+**Full Changelog**: https://github.com/defstudio/telegraph/compare/v1.24.2...v1.24.3
+
+## v1.24.2 - 2022-11-24
+
+### What's Changed
+
+- [revert] upgrade to markdown V2 by @fabio-ivona in https://github.com/defstudio/telegraph/pull/272
+- [fix] markdown-v2 opt-in through configs or `markdownV2 ()`method by @fabio-ivona in https://github.com/defstudio/telegraph/pull/273
+
+**Full Changelog**: https://github.com/defstudio/telegraph/compare/v1.24.1...v1.24.2
+
+## v1.24.1 - 2022-11-20
+
+### What's Changed
+
+- [fix] add missing dice method in TelegraphChat by @fabio-ivona in https://github.com/defstudio/telegraph/pull/266
+
+**Full Changelog**: https://github.com/defstudio/telegraph/compare/v1.24.0...v1.24.1
+
+## v1.24.0 - 2022-11-19
+
+### What's Changed
+
+- [feat] storage system by @fabio-ivona in https://github.com/defstudio/telegraph/pull/263
+- [feat] upgrade to markdown V2 by @fabio-ivona in https://github.com/defstudio/telegraph/pull/265
+
+**Full Changelog**: https://github.com/defstudio/telegraph/compare/v1.23.1...v1.24.0
+
+## v1.23.0 - 2022-11-13
+
+### What's Changed
+
+- [feat] custom webhook domain by @fabio-ivona in https://github.com/defstudio/telegraph/pull/256
+
+**Full Changelog**: https://github.com/defstudio/telegraph/compare/v1.22...v1.23.0
+
 ## v1.22 - 2022-11-10
 
 ### What's Changed
