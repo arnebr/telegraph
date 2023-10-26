@@ -62,6 +62,16 @@ Retrieves the chat member count from telegram
 $telegraphChat->memberCount(); /* 42 */
 ```
 
+### `memberInfo()`
+
+Retrieves the chat member info from telegram
+
+```php
+/** @var \DefStudio\Telegraph\Models\TelegraphChat $telegraphChat */
+
+$telegraphChat->memberInfo('user_id'); /* 42 */
+```
+
 ## Optional parameters
 
 Attachments methods only supports required parameters, optional parameters can be sent through Telegraph `->withData()` method:
